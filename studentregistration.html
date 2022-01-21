@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <style>
+        body {
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #Form-container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+
+        }
+
+        h2 {
+            margin: 0px 0px 10px 0px;
+        }
+
+        input {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            width: 222px;
+            background-color: #3498db;
+            border: 0px;
+            color: white;
+        }
+
+        .error {
+            color: red;
+            margin: 0px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<!-- body start -->
+
+<body>
+    <div id="Form-container">
+        <h2>Login</h2>
+        <form action="formstudent.html" onsubmit="return validateForm()">
+
+            <input type="text" placeholder="You Full Name " id="fullname"> <br>
+            <p id="nameError" class="error"> </p>
+
+            <input type="text" placeholder="User Name" id="username"> <br>
+            <p id="userError" class="error"> </p>
+
+            <input type="password" placeholder="password" id="password"> <br>
+            <p id="passError" class="error"> </p>
+
+
+            <input type="number" placeholder="number" id="number"> <br>
+            <p id="numError" class="error"> </p>
+
+            <textarea id="area" placeholder="Address" rows="4" cols="29"></textarea> <br>
+            <p id="areaError" class="error"> </p>
+            <input type="submit">
+        </form>
+    </div>
+    <!-- body end -->
+    <script>
+        let fullname = document.getElementById("fullname");
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let number = document.getElementById("number");
+        let area = document.getElementById("area");
+        let flag = 1;
+        function validateForm() {
+            // fullname validation
+            if (fullname.value == "") {
+                document.getElementById("nameError").innerHTML = "Your full name is empty"
+                flag = 0;
+            } else if (fullname.value.length < 4) {
+                document.getElementById("nameError").innerHTML = "Your name required min 4 char";
+                flag = 0;
+            } else {
+                document.getElementById("nameError").innerHTML = "";
+                flag = 1;
+            }
+            // username validation
+            if (username.value == "") {
+                document.getElementById("userError").innerHTML = "user name is empty"
+                flag = 0;
+            } else if (username.value.length < 4) {
+                document.getElementById("userError").innerHTML = "user name required min 4 char";
+                flag = 0;
+            } else {
+                document.getElementById("userError").innerHTML = "";
+                flag = 1;
+            }
+            // password validation
+            if (password.value == "") {
+                document.getElementById("passError").innerHTML = "password is empty";
+                flag = 0;
+            } else if (password.value.length < 4) {
+                document.getElementById("passError").innerHTML = "password required min 5 char";
+                flag = 0;
+            }
+            else {
+                document.getElementById("passError").innerHTML = "";
+                flag = 1;
+            }
+            // number validation
+            if (number.value == "") {
+                document.getElementById("numError").innerHTML = "number is empty"
+                flag = 0;
+            } else if (number.value.length < 10) {
+                document.getElementById("numError").innerHTML = "Number is required 10 digit";
+                flag = 0;
+            } else {
+                document.getElementById("numError").innerHTML = "";
+                flag = 1;
+            }
+            // address validation
+            if (area.value == "") {
+                document.getElementById("areaError").innerHTML = "Address is empty"
+                flag = 0;
+            }
+            else {
+                document.getElementById("areaError").innerHTML = "";
+                flag = 1;
+            }
+            if (flag) {
+                alert(" you have successfull register")
+            }
+            else {
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>
